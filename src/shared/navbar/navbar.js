@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-// import AuthLoginProfile from '../../utils/auth/components/login-profile';
+import AuthLoginProfile from '../../auth/login-profile';
 
 class AppNavBar extends React.Component {
   render() {
@@ -23,9 +23,9 @@ class AppNavBar extends React.Component {
             <NavItem className="whiteText" eventKey={3} href="/whereToBuy">
               WHERE TO BUY
             </NavItem>
-            {/* <NavItem >
+            <NavItem >
               <AuthLoginProfile/>
-            </NavItem> */}
+            </NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

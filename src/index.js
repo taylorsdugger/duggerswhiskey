@@ -14,6 +14,9 @@ import './index.css';
 import PageContainer from './shared/pageContainer/pageContainer';
 import Home from './areas/home/home';
 import Whiskey from './areas/whiskey/whiskey';
+import WhereToBuy from './areas/whereToBuy/whereToBuy';
+import Login from './auth/login';
+import Callback from './auth/callback';
 
 ReactDOM.render(
     <PageContainer>
@@ -21,6 +24,9 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/whiskey' component={Whiskey} />
+            <Route path='/whereToBuy' component={WhereToBuy} />
+            <Route path='/login' component={Login} />
+            <Route path="/callback" component={Callback} />
             {/*<Route path='/resume' component={Resume} />
             <Route path='/briefings' component={BriefingManager} />
             <Route path='/voice' component={Voice}/>
