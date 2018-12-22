@@ -13,14 +13,15 @@ import './index.css';
 //areas
 import PageContainer from './shared/pageContainer/pageContainer';
 import Home from './areas/home/home';
+import Whiskey from './areas/whiskey/whiskey';
 
 ReactDOM.render(
     <PageContainer>
         <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Home} />
-            {/* <Route path='/about' component={AboutMe} />
-            <Route path='/resume' component={Resume} />
+            <Route path='/whiskey' component={Whiskey} />
+            {/*<Route path='/resume' component={Resume} />
             <Route path='/briefings' component={BriefingManager} />
             <Route path='/voice' component={Voice}/>
             <Route path='/briefing-content-manager' component={BriefingContentManagerSales}/>

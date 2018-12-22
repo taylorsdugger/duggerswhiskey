@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, Button, Image} from 'react-bootstrap';
-import barrel_with_bottle from '../../shared/assets/logo_overlay3.png';
+import barrel_with_bottle from '../../shared/assets/logo_overlay4.png';
 
 class HomeComponent extends React.Component {
     render() {
@@ -9,7 +9,7 @@ class HomeComponent extends React.Component {
                 <Grid>
                     <Row>
                         <br></br>
-                        <Col md={12} xs={12}>
+                        <Col xs={12}>
                             <Image responsive className="homeLogo" src={barrel_with_bottle} alt="Dugger's Whiskey"/>
                         </Col>
                     </Row>
