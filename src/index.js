@@ -1,0 +1,42 @@
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter,Redirect, Route, Switch } from 'react-router-dom';
+import * as serviceWorker from './serviceWorker';
+
+//styles
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import 'font-awesome/css/font-awesome.min.css';
+import './index.css';
+
+//areas
+import PageContainer from './shared/pageContainer/pageContainer';
+import Home from './areas/home/home';
+
+ReactDOM.render(
+    <PageContainer>
+        <BrowserRouter>
+        <Switch>
+            <Route exact path='/' component={Home} />
+            {/* <Route path='/about' component={AboutMe} />
+            <Route path='/resume' component={Resume} />
+            <Route path='/briefings' component={BriefingManager} />
+            <Route path='/voice' component={Voice}/>
+            <Route path='/briefing-content-manager' component={BriefingContentManagerSales}/>
+            {/* <Route path='/custom-skills' component={CustomSkillsSales}/> */}
+            {/*<Route path='/login' component={Login}/>
+            <Route path="/callback" component={Callback} /> */}
+            <Redirect to="/" />
+        </Switch>
+        </BrowserRouter>
+    </PageContainer>
+
+, document.getElementById('root'));
+
+
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
