@@ -12,7 +12,7 @@ class AuthLoginProfile extends React.Component {
     componentDidMount() {
         getUserProfile().then(x => {
             this.setState({ picture: x.picture, nickname: x.nickname });
-        })
+        });
     }
     login() {
         login('/');
@@ -24,13 +24,13 @@ class AuthLoginProfile extends React.Component {
         if (isLoggedIn()) {
             return (
                 <div>
-                    <span className='red-underline-text' onClick={this.logout}>LOGOUT&nbsp;</span>
+                    <span onClick={this.logout}>LOGOUT&nbsp;</span>
                     <Image src={this.state.picture} circle height={20} />
                 </div>
             )
         }
         else {
-            return (<span className='red-underline-text' onClick={this.login}>LOGIN</span>)
+            return (<span onClick={this.login}>LOGIN</span>)
         }
     }
 }

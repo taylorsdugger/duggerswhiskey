@@ -15,6 +15,7 @@ import PageContainer from './shared/pageContainer/pageContainer';
 import Home from './areas/home/home';
 import Whiskey from './areas/whiskey/whiskey';
 import WhereToBuy from './areas/whereToBuy/whereToBuy';
+import ContactUs from './areas/contactUs/contactUs';
 import Login from './auth/login';
 import Callback from './auth/callback';
 
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route exact path='/' component={Home} />
             <Route path='/whiskey' component={Whiskey} />
             <Route path='/whereToBuy' component={WhereToBuy} />
+            <Route path='/contactUs' component={ContactUs} />
             <Route path='/login' component={Login} />
             <Route path="/callback" component={Callback} />
             {/*<Route path='/resume' component={Resume} />

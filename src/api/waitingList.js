@@ -1,25 +1,25 @@
 import axios from 'axios';
 import config from '../config';
-import { getAccessToken, getUserProfile } from '../auth/auth-service';
+import { getAccessToken } from '../auth/auth-service';
 
-const a = axios.create({
-    baseURL: config.api,
-    headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${getAccessToken()}`
-    }
-});
+export default {
+    joinWaitingList() {
+        const endpoint = config.api;
+        const token = getAccessToken();
 
-const api = {
-    joinList: () => {
         return new Promise((resolve, reject) => {
-            // getUserProfile().then((profile) => {
-            //     a.get(`/briefings/${feedName}`).then((res) => {
-            //         resolve(res.data);
-            //     });
-            // });
-            resolve('200');
+            axios.post(`${endpoint}joinWaitingList`, {
+                headers: {
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            }).then(response => {
+                resolve(response);
+            }).catch(err => {
+                reject(err);
+            });
         });
     }
-};
-export default api;
+}

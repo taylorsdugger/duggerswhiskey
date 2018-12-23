@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Button} from 'react-bootstrap';
 import { isLoggedIn, login } from '../../auth/auth-service';
-import api from '../../api/waitingList';
+import api from '../../api';
 
 class HomeComponent extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class HomeComponent extends React.Component {
     }
     joinList () {
         if(isLoggedIn()){
-            api.joinList().then((result) => {
+            api.waitingList.joinWaitingList().then((result) => {
                 this.setState({ waitingList: 'kentucky_bourbon' });
             });
         } else {
@@ -38,7 +38,7 @@ class HomeComponent extends React.Component {
                         </Col>
                         <div style={{paddingTop:"20rem"}} className="text-center">
                             <Col xs={4}>
-                                <h3 style={{color:"darkgrey"}}>KENTUCKY BOURBON WHISKEY</h3>
+                                <h3 style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
                                 { this.state.waitingList.indexOf('kentucky_bourbon') > -1 ?
                                     <label>You're on the list!</label>
                                 :
@@ -46,7 +46,7 @@ class HomeComponent extends React.Component {
                                 }
                             </Col>                   
                             <Col xs={4}>
-                                <h3 style={{color:"darkgrey"}}>PREMIUM SCOTCH</h3>
+                                <h3 style={{color:"grey"}}>PREMIUM SCOTCH</h3>
                                 { this.state.waitingList.indexOf('scotch') > -1 ?
                                     <label>You're on the list!</label>
                                 :
@@ -54,7 +54,7 @@ class HomeComponent extends React.Component {
                                 }
                             </Col>
                             <Col xs={4}>
-                                <h3 style={{color:"darkgrey"}}>CINNAMON WHISKEY LIQUEUR</h3>
+                                <h3 style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
                                 { this.state.waitingList.indexOf('cinnamon_whiskey') > -1 ?
                                     <label>You're on the list!</label>
                                 :

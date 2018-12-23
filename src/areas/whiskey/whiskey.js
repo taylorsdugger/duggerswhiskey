@@ -1,8 +1,6 @@
 import React from 'react';
-import { Grid, Row, Col, Button, Image} from 'react-bootstrap';
-import bourbon from '../../shared/assets/bourbon.jpg';
-import cinnamon from '../../shared/assets/cinnamon.jpg';
-import scotch from '../../shared/assets/scotch.jpg';
+import { Grid, Row, Col } from 'react-bootstrap';
+import barrel_with_bottle from '../../shared/assets/barrel_with_bottle.jpg';
 
 class HomeComponent extends React.Component {
     render() {
@@ -14,17 +12,21 @@ class HomeComponent extends React.Component {
                         <Col xs={12} className="text-center">
                             <h1>OUR WHISKEY</h1>
                         </Col>
-                        <Col xs={4}>
-                            <h3 className="text-center">KENTUCKY BOURBON WHISKEY</h3>
-                            {/* <Image responsive className="homeLogo" src={bourbon} alt="Dugger's Whiskey"/> */}
+                        <Col xs={12} className="text-center">
+                            <h4>EVERY WHISKEY IS METICULOUSLY HAND-CRAFTED AND MADE IN SMALL BATCHES TO ENSURE THE BEST QUALITY</h4>
                         </Col>
-                        <Col xs={4}>
-                            <h3 className="text-center">PREMIUM SCOTCH</h3>
-                            {/* <Image responsive className="homeLogo" src={cinnamon} alt="Dugger's Whiskey"/> */}
+                        <Col xs={6} style={{paddingTop:"1rem"}}>
+                            <h3 className="text-center">WHAT WE MAKE:</h3>
+                            <h3 className="text-center" style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
+                            <h3 className="text-center" style={{color:"grey"}}>PREMIUM SCOTCH</h3>
+                            <h3 className="text-center" style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
                         </Col>
-                        <Col xs={4}>
-                            <h3 className="text-center">CINNAMON WHISKEY LIQUEUR</h3>
-                            {/* <Image responsive className="homeLogo" src={scotch} alt="Dugger's Whiskey"/> */}
+                        <Col xs={6}>
+                            <h5 className="text-center" style={{paddingTop:"2rem"}}>IT ALL STARTED WHEN I GOT A CHRISTMAS PRESENT FROM MY FINANCE</h5>
+                            <h5 className="text-center">I WAS HOOKED AND IT WENT FROM SOMETHING FUN TO DO TO SOMETHING I LOVE</h5>
+                            <Col xsHidden smHidden>
+                                <img className="homeLogo" src={barrel_with_bottle} style={{transform: "rotate(90deg)", height:"350px", marginTop: "15%"}} alt="Dugger's Whiskey"/>
+                            </Col>
                         </Col>
                     </Row>
                 </Grid>
