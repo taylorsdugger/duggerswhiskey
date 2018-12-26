@@ -22,7 +22,7 @@ class HomeComponent extends React.Component {
     componentDidMount() {
         if(isLoggedIn()) {
             getUserProfile().then(x => {
-                this.setState({ family_name: x.family_name, given_name: x.given_name });
+                this.setState({ family_name: x.family_name, given_name: x.given_name, email: x.email });
             });
         }
     }

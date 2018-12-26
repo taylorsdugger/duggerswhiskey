@@ -12,7 +12,7 @@ const options = {
   redirectUri: config.auth.redirectUri,
   //audience: config.auth.audience,
   responseType: 'token id_token',
-  scope: 'openid profile',
+  scope: 'openid email profile',
   theme: {
     logo: logo_overlay,
     primaryColor: '#31324F'

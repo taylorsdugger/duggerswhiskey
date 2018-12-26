@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, Button} from 'react-bootstrap';
-import { isLoggedIn, login } from '../../auth/auth-service';
+import { isLoggedIn, login, getUserProfile } from '../../auth/auth-service';
 import api from '../../api';
 
 class HomeComponent extends React.Component {
@@ -12,14 +12,34 @@ class HomeComponent extends React.Component {
         this.joinList = this.joinList.bind(this);
     }
     componentDidMount() {
-        // getUserProfile().then(x => {
-        //     this.setState({ picture: x.picture, nickname: x.nickname });
-        // })
-    }
-    joinList () {
         if(isLoggedIn()){
-            api.waitingList.joinWaitingList().then((result) => {
-                this.setState({ waitingList: 'kentucky_bourbon' });
+            getUserProfile().then(x => {
+                let newState = Object.assign({}, this.state);
+                newState.family_name = x.family_name;
+                newState.given_name = x.given_name;
+                newState.email = x.email;
+                api.waitingList.getJoinedLists(x.email).then(result => {
+                    newState.waitingList = result;
+                    this.setState(newState);
+                });
+            });
+        }
+    }
+    joinList (e) {
+        if(isLoggedIn()){
+            const name = e.target.name;
+            const payload = {
+                whiskey_type: name,
+                email: this.state.email,
+                given_name: this.state.given_name,
+                family_name: this.state.family_name
+            }
+            api.waitingList.joinWaitingList(payload).then(() => {
+                const joinedLists = this.state.waitingList;
+                if(joinedLists.indexOf(name) === -1){
+                    joinedLists.push(name);
+                    this.setState({ waitingList: joinedLists });
+                }
             });
         } else {
             login('/whereToBuy')
@@ -40,25 +60,25 @@ class HomeComponent extends React.Component {
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
                                 { this.state.waitingList.indexOf('kentucky_bourbon') > -1 ?
-                                    <label>You're on the list!</label>
+                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
                                 :
-                                    <Button onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
+                                    <Button name='kentucky_bourbon' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
                             </Col>                   
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>PREMIUM SCOTCH</h3>
                                 { this.state.waitingList.indexOf('scotch') > -1 ?
-                                    <label>You're on the list!</label>
+                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
                                 :
-                                    <Button onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
+                                    <Button name='scotch' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
                             </Col>
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
                                 { this.state.waitingList.indexOf('cinnamon_whiskey') > -1 ?
-                                    <label>You're on the list!</label>
+                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
                                 :
-                                    <Button onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
+                                    <Button name='cinnamon_whiskey' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
                             </Col>
                         </div>
