@@ -17,7 +17,7 @@ class AppFooter extends React.Component {
                         <a className="footerLink" href="/whereToBuy">WHERE TO BUY</a>
                     </Col>
                     <Col xsHidden sm={12} className="text-center">
-                        <a href="/"><img src={logo_overlay} height={60}></img></a>
+                        <a href="/"><img src={logo_overlay} height={60} alt="DUGGERS WHISKEY"></img></a>
                     </Col>
                     <Col xs={12} className="text-center">
                         <small className="whiteText">{new Date().getFullYear()} DUGGER'S WHISKEY-MINNEAPOLIS, MINNESOTA</small>

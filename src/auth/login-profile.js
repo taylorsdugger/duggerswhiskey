@@ -1,6 +1,6 @@
 import React from 'react';
 import { isLoggedIn, getUserProfile, login, logout } from './auth-service';
-import { Image, Button } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
 class AuthLoginProfile extends React.Component {
     constructor(props) {

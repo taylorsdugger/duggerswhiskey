@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Button, Image} from 'react-bootstrap';
+import { Grid, Row, Col, Image} from 'react-bootstrap';
 import barrel_with_bottle from '../../shared/assets/logo_overlay4.png';
 
 class HomeComponent extends React.Component {
