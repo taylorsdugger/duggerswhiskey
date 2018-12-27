@@ -54,13 +54,13 @@ class HomeComponent extends React.Component {
                         <Col xs={12} className="text-center">
                             <h3>ALL OF OUR WHISKEY IS HANDMADE IN SMALL BATCHES</h3>
                             <h3>AND AS A RESULT, PRODUCTION IS VERY LIMITED</h3>
-                            <h3>YOU CAN JOIN THE WAITING LIST TO BUY A BOTTLE WHEN IT BECOMES AVAILABLE</h3>
+                            <h3>YOU CAN JOIN THE WAITING LIST TO GET A BOTTLE WHEN IT BECOMES AVAILABLE</h3>
                         </Col>
                         <div style={{paddingTop:"20rem"}} className="text-center">
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
                                 { this.state.waitingList.indexOf('kentucky_bourbon') > -1 ?
-                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
+                                    <label>YOU ARE ON THE WAITING LIST!</label>
                                 :
                                     <Button name='kentucky_bourbon' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
@@ -68,7 +68,7 @@ class HomeComponent extends React.Component {
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>PREMIUM SCOTCH</h3>
                                 { this.state.waitingList.indexOf('scotch') > -1 ?
-                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
+                                    <label>YOU ARE ON THE WAITING LIST!</label>
                                 :
                                     <Button name='scotch' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
@@ -76,7 +76,7 @@ class HomeComponent extends React.Component {
                             <Col xs={4}>
                                 <h3 style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
                                 { this.state.waitingList.indexOf('cinnamon_whiskey') > -1 ?
-                                    <label>YOU ARE ON THE WAITING LIST ALREADY!</label>
+                                    <label>YOU ARE ON THE WAITING LIST!</label>
                                 :
                                     <Button name='cinnamon_whiskey' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }

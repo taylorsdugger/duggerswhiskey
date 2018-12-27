@@ -1,10 +1,10 @@
 const config = {
-    api: "http://localhost:3001/",
+    api: '#{API_URL}#',
     auth: {
-        siteDomain: 'https://duggerswhiskey.net/',
-        domain: 'duggerswhiskey.auth0.com',
-        clientID: 'R600OJ9xOLh6mRWGgGNG5YCSS3oVHEnu',
-        redirectUri: '#{AUTH_REDIRECT_URL}#'// || 'https://duggerswhiskey.net/callback'
+        siteDomain: '#{SITE_URL}#',
+        domain: '#{AUTH_DOMAIN}#',
+        clientID: '#{CLIENT_ID}#',
+        redirectUri: '#{AUTH_REDIRECT_URL}#'
     }
 };
 export default config;
