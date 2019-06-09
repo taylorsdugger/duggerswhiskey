@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter,Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 //styles
@@ -20,28 +20,21 @@ import Login from './auth/login';
 import Callback from './auth/callback';
 
 ReactDOM.render(
-    <PageContainer>
-        <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/whiskey' component={Whiskey} />
-            <Route path='/whereToBuy' component={WhereToBuy} />
-            <Route path='/contactUs' component={ContactUs} />
-            <Route path='/login' component={Login} />
-            <Route path="/callback" component={Callback} />
-            {/*<Route path='/resume' component={Resume} />
-            <Route path='/briefings' component={BriefingManager} />
-            <Route path='/voice' component={Voice}/>
-            <Route path='/briefing-content-manager' component={BriefingContentManagerSales}/>
-            {/* <Route path='/custom-skills' component={CustomSkillsSales}/> */}
-            {/*<Route path='/login' component={Login}/>
-            <Route path="/callback" component={Callback} /> */}
-            <Redirect to="/" />
-        </Switch>
-        </BrowserRouter>
-    </PageContainer>
+  <PageContainer>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/whiskey' component={Whiskey} />
+        <Route path='/whereToBuy' component={WhereToBuy} />
+        <Route path='/contactUs' component={ContactUs} />
+        <Route path='/login' component={Login} />
+        <Route path="/callback" component={Callback} />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
+  </PageContainer>
 
-, document.getElementById('root'));
+  , document.getElementById('root'));
 
 
 

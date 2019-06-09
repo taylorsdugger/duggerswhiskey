@@ -2,31 +2,38 @@ import React from 'react';
 import { Grid, Row, Col, Button} from 'react-bootstrap';
 import { isLoggedIn, login, getUserProfile } from '../../auth/auth-service';
 import api from '../../api';
+import { RotateLoader } from 'react-spinners';
 
 class HomeComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            waitingList: []
+            waitingList: [],
+            loading: true
         };
         this.joinList = this.joinList.bind(this);
     }
-    componentDidMount() {
+    async componentDidMount() {
         if(isLoggedIn()){
-            getUserProfile().then(x => {
-                let newState = Object.assign({}, this.state);
-                newState.family_name = x.family_name;
-                newState.given_name = x.given_name;
-                newState.email = x.email;
-                api.waitingList.getJoinedLists(x.email).then(result => {
-                    newState.waitingList = result;
-                    this.setState(newState);
-                });
+          const userProfile = await getUserProfile();
+          if(userProfile){
+            let newState = Object.assign({}, this.state);
+            newState.family_name = userProfile.family_name;
+            newState.given_name = userProfile.given_name;
+            newState.email = userProfile.email;
+            api.waitingList.getJoinedLists(userProfile.email).then(result => {
+                newState.waitingList = result;
+                newState.loading = false;
+                this.setState(newState);
             });
+          }
+        } else {
+          this.setState({loading:false});
         }
     }
     joinList (e) {
         if(isLoggedIn()){
+          this.setState({ loading: true });
             const name = e.target.name;
             const payload = {
                 whiskey_type: name,
@@ -38,11 +45,11 @@ class HomeComponent extends React.Component {
                 const joinedLists = this.state.waitingList;
                 if(joinedLists.indexOf(name) === -1){
                     joinedLists.push(name);
-                    this.setState({ waitingList: joinedLists });
+                    this.setState({ waitingList: joinedLists, loading: false });
                 }
             });
         } else {
-            login('/whereToBuy')
+            login('/whereToBuy');
         }
     }
     render() {
@@ -57,7 +64,7 @@ class HomeComponent extends React.Component {
                             <h3>YOU CAN JOIN THE WAITING LIST TO GET A BOTTLE WHEN IT BECOMES AVAILABLE</h3>
                         </Col>
                         <div style={{paddingTop:"20rem"}} className="text-center">
-                            <Col xs={4}>
+                            <Col xs={6}>
                                 <h3 style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
                                 { this.state.waitingList.indexOf('kentucky_bourbon') > -1 ?
                                     <label>YOU ARE ON THE WAITING LIST!</label>
@@ -65,7 +72,7 @@ class HomeComponent extends React.Component {
                                     <Button name='kentucky_bourbon' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
                             </Col>                   
-                            <Col xs={4}>
+                            <Col xs={6}>
                                 <h3 style={{color:"grey"}}>PREMIUM SCOTCH</h3>
                                 { this.state.waitingList.indexOf('scotch') > -1 ?
                                     <label>YOU ARE ON THE WAITING LIST!</label>
@@ -73,16 +80,9 @@ class HomeComponent extends React.Component {
                                     <Button name='scotch' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
                                 }
                             </Col>
-                            <Col xs={4}>
-                                <h3 style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
-                                { this.state.waitingList.indexOf('cinnamon_whiskey') > -1 ?
-                                    <label>YOU ARE ON THE WAITING LIST!</label>
-                                :
-                                    <Button name='cinnamon_whiskey' onClick={this.joinList} className="btn btn-primary">JOIN THE LIST</Button>
-                                }
-                            </Col>
                         </div>
                     </Row>
+                    {this.state.loading && <div style={{top: '50%', left: '50%', position: 'fixed'}}><RotateLoader></RotateLoader></div>}
                 </Grid>
             </div>
         )

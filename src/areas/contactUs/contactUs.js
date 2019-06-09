@@ -3,6 +3,7 @@ import { Grid, Row, Col, Button, Image, FormGroup, ControlLabel, FormControl} fr
 import { isLoggedIn, getUserProfile } from '../../auth/auth-service';
 import barrel_front from '../../shared/assets/logo_black_white.png';
 import api from '../../api';
+import { RotateLoader } from 'react-spinners';
 
 class HomeComponent extends React.Component {
     constructor(props, context) {
@@ -14,16 +15,16 @@ class HomeComponent extends React.Component {
             family_name: '',
             given_name: '',
             email: '',
-            subject: ''
+            subject: '',
+            loading: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.sendEmail = this.sendEmail.bind(this);
     }
-    componentDidMount() {
+    async componentDidMount() {
         if(isLoggedIn()) {
-            getUserProfile().then(x => {
-                this.setState({ family_name: x.family_name, given_name: x.given_name, email: x.email });
-            });
+            const userProfile = await getUserProfile();
+            if(userProfile) this.setState({ family_name: userProfile.family_name, given_name: userProfile.given_name, email: userProfile.email });
         }
     }
     handleChange(e) {
@@ -36,9 +37,10 @@ class HomeComponent extends React.Component {
         }
     }
     sendEmail() {
+        this.setState({ loading: true });
         api.email.sendEmail(this.state).then(function(){
             console.log('done!')
-            this.setState({ emailSent: true});
+            this.setState({ emailSent: true, loading: false });
         }.bind(this)).catch(function(error){
             console.log(error)
         });
@@ -85,6 +87,7 @@ class HomeComponent extends React.Component {
                                 : 
                                     <h4 style={{paddingTop:"6rem"}}>THANK YOU FOR CONTACTING US. WE GOT YOUR EMAIL AND WILL GET BACK TO YOU SOON! </h4>
                                 }
+                                {this.state.loading && <div style={{top: '50%', left: '75%', position: 'fixed'}}><RotateLoader></RotateLoader></div>}
                             </Col>
                     </Row>
                 </Grid>

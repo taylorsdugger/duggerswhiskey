@@ -40,7 +40,7 @@ export function getUserProfile() {
       if (isLoggedIn()) {
         auth.client.userInfo(getAccessToken(), (err, profile) => {
           userProfile = profile;
-          resolve(profile);
+          resolve(userProfile);
         });
       }else{
         reject('not authenticated');

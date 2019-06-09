@@ -11,7 +11,7 @@ class AuthLoginProfile extends React.Component {
     }
     componentDidMount() {
         getUserProfile().then(x => {
-            this.setState({ picture: x.picture, nickname: x.nickname });
+            if(x) this.setState({ picture: x.picture, nickname: x.nickname });
         });
     }
     login() {

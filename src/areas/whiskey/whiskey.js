@@ -19,7 +19,6 @@ class HomeComponent extends React.Component {
                             <h3 className="text-center">WHAT WE MAKE:</h3>
                             <h3 className="text-center" style={{color:"grey"}}>KENTUCKY BOURBON WHISKEY</h3>
                             <h3 className="text-center" style={{color:"grey"}}>PREMIUM SCOTCH</h3>
-                            <h3 className="text-center" style={{color:"grey"}}>CINNAMON WHISKEY LIQUEUR</h3>
                         </Col>
                         <Col xs={6}>
                             <h5 className="text-center" style={{paddingTop:"2rem"}}>IT ALL STARTED WHEN I GOT A CHRISTMAS PRESENT FROM MY FINANCE</h5>
