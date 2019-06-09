@@ -1,10 +1,10 @@
 const config = {
-    api: '#{API_URL}#',
+    api: process.env.API_URL,
     auth: {
-        siteDomain: '#{SITE_URL}#',
-        domain: '#{AUTH_DOMAIN}#',
-        clientID: '#{CLIENT_ID}#',
-        redirectUri: '#{AUTH_REDIRECT_URL}#'
+        siteDomain: process.env.SITE_URL,
+        domain: process.env.AUTH_DOMAIN,
+        clientID: process.env.CLIENT_ID,
+        redirectUri: process.env.AUTH_REDIRECT_URL
     }
 };
 export default config;
