@@ -1,7 +1,9 @@
 import waitingList from './waitingList';
 import email from './email';
+import reviews from './reviews';
 
 export default {
-    waitingList,
-    email
+  waitingList,
+  email,
+  reviews
 }

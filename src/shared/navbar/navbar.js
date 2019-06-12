@@ -23,6 +23,9 @@ class AppNavBar extends React.Component {
             <NavItem className="whiteText" eventKey={3} href="/whereToBuy">
               WHERE TO BUY
             </NavItem>
+            <NavItem className="whiteText" eventKey={4} href="/reviews">
+              REVIEWS
+            </NavItem>
             <NavItem >
               <AuthLoginProfile/>
             </NavItem>

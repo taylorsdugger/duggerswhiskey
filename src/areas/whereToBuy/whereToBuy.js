@@ -4,7 +4,7 @@ import { isLoggedIn, login, getUserProfile } from '../../auth/auth-service';
 import api from '../../api';
 import { RotateLoader } from 'react-spinners';
 
-class HomeComponent extends React.Component {
+class WhereToBuy extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -88,4 +88,4 @@ class HomeComponent extends React.Component {
         )
     }
 }
-export default HomeComponent;
+export default WhereToBuy;

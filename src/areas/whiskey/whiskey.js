@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import barrel_with_bottle from '../../shared/assets/barrel_with_bottle.jpg';
 
-class HomeComponent extends React.Component {
+class Whiskey extends React.Component {
     render() {
         return (
             <div className="background">
@@ -33,4 +33,4 @@ class HomeComponent extends React.Component {
         )
     }
 }
-export default HomeComponent;
+export default Whiskey;

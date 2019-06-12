@@ -3,12 +3,12 @@ import config from '../config';
 import { getAccessToken } from '../auth/auth-service';
 
 export default {
-  joinWaitingList(payload) {
+  addReview(payload) {
     const endpoint = config.api;
     const token = getAccessToken();
 
     return new Promise((resolve, reject) => {
-      axios.post(`${endpoint}joinWaitingList`, payload, {
+      axios.post(`${endpoint}reviews`, payload, {
         headers: {
           'content-type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -20,12 +20,12 @@ export default {
       });
     });
   },
-  getJoinedLists(email) {
+  getReviews() {
     const endpoint = config.api;
     const token = getAccessToken();
 
     return new Promise((resolve, reject) => {
-      axios.get(`${endpoint}getJoinedLists/${email}`, {
+      axios.get(`${endpoint}reviews`, {
         headers: {
           'content-type': 'application/json',
           'Authorization': `Bearer ${token}`

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid, Row, Col, Button, Image, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import { Grid, Row, Col, Button, Image, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { isLoggedIn, getUserProfile } from '../../auth/auth-service';
 import barrel_front from '../../shared/assets/logo_black_white.png';
 import api from '../../api';
 import { RotateLoader } from 'react-spinners';
 
-class HomeComponent extends React.Component {
+class ContactUs extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -95,4 +95,4 @@ class HomeComponent extends React.Component {
         )
     }
 }
-export default HomeComponent;
+export default ContactUs;

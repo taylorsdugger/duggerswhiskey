@@ -4,13 +4,12 @@ import config from '../config';
 import logo_overlay from '../shared/assets/logo_overlay2.png';
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
-const USER_PROFILE_KEY = 'user_profile';
+const USER_PROFILE = 'user_profile';
 
 const options = {
   domain: config.auth.domain,
   clientID: config.auth.clientID,
   redirectUri: config.auth.redirectUri,
-  //audience: config.auth.audience,
   responseType: 'token id_token',
   scope: 'openid email profile',
   theme: {
@@ -32,10 +31,11 @@ export function logout(state) {
   clearAccessToken();
   window.location.href = state;
 }
+
 export function getUserProfile() {
   return new Promise((resolve, reject) => {
-    if (userProfile) {
-      resolve(userProfile);
+    if (userProfile || localStorage.getItem(USER_PROFILE)) {
+      resolve(userProfile || JSON.parse(localStorage.getItem(USER_PROFILE)));
     } else {
       if (isLoggedIn()) {
         auth.client.userInfo(getAccessToken(), (err, profile) => {
@@ -88,7 +88,7 @@ export function setIdToken() {
   let idToken = getParameterByName('id_token');
   localStorage.setItem(ID_TOKEN_KEY, idToken);
   let user = decode(idToken);
-  localStorage.setItem(USER_PROFILE_KEY, JSON.stringify(user));
+  localStorage.setItem(USER_PROFILE, JSON.stringify(user));
   userProfile = user;
 }
 
