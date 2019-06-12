@@ -54,7 +54,7 @@ class WhereToBuy extends React.Component {
     }
     render() {
         return (
-            <div className="background">
+            <div style={{marginBottom: '45rem'}} className="background">
                 <Grid>
                     <Row>
                         <br></br>

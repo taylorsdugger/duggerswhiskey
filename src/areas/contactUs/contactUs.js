@@ -39,7 +39,7 @@ class ContactUs extends React.Component {
     sendEmail() {
         this.setState({ loading: true });
         api.email.sendEmail(this.state).then(function(){
-            console.log('done!')
+            console.log('done!');
             this.setState({ emailSent: true, loading: false });
         }.bind(this)).catch(function(error){
             console.log(error)

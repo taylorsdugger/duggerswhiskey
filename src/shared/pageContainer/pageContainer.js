@@ -8,7 +8,7 @@ class PageContainer extends React.Component {
       <div>
         <AppNavBar />
           {this.props.children}
-        <AppFooter />
+        {/* <AppFooter /> */}
       </div>
     );
   }

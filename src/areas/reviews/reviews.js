@@ -25,7 +25,7 @@ class ReviewPage extends React.Component {
       if(userProfile) this.setState({ name: userProfile.given_name + ' ' + userProfile.family_name, email: userProfile.email });
     }
     api.reviews.getReviews().then(result => {
-      this.setState({reviews: result.reviews, overallRating: result.reviewSum[0].total, loading: false});
+      this.setState({reviews: result.reviews, overallRating: result.overallRating, loading: false});
     }).catch(e => {
       this.setState({loading: false});
     });
@@ -58,7 +58,7 @@ class ReviewPage extends React.Component {
 
     api.reviews.addReview(payload).then(result => {
       api.reviews.getReviews().then(result => {
-        this.setState({reviews: result.reviews, overallRating: result.reviewSum[0].total,  loading: false});
+        this.setState({reviews: result.reviews, overallRating: result.overallRating,  loading: false});
       }).catch(e => {
         this.setState({loading: false});
       });
@@ -119,7 +119,7 @@ class ReviewPage extends React.Component {
             </Col>
             <Col xs={6} className="text-center" >
               {this.state.loading && <div style={{top: '50%', left: '75%', position: 'fixed'}}><RotateLoader></RotateLoader></div>}
-              <h3>OVERALL RATING: {this.state.overallRating}/5</h3>
+              <h3>OVERALL RATING: {Number(this.state.overallRating).toFixed(1)}/5</h3>
               <StarRatings
                   rating={this.state.overallRating}
                   starRatedColor="orange"

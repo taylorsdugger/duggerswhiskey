@@ -9,10 +9,9 @@ import {
 import moment from 'moment';
 
 class SingleReview extends React.Component {
-
   render() {
     return (
-      <div>
+      <div style={{marginBottom: '1rem'}}>
         <Card>
           <CardBody>
             <CardTitle h4 style={{fontWeight:700}}>
